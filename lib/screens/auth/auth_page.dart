@@ -17,6 +17,7 @@ class AuthPage extends StatelessWidget {
                 width:double.infinity,
 
 
+
                  decoration: BoxDecoration(gradient:LinearGradient(colors: [Colors.white,Colors.transparent])),
               ),
 
