@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../widget/custom_text_form_field.dart';
 import '../Forget_Password.dart';
 
 class Sign_In extends StatelessWidget {
@@ -31,27 +32,20 @@ class Sign_In extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               // Email TextField
-              TextField(
+              CustomTextFormField(
+                labelText: "Email",
                 controller: emailController,
-                decoration: InputDecoration(
-                  labelText: "Email",
-                  hintText: "Enter your email",
-                  border: OutlineInputBorder(),
-                ),
               ),
+
+
               SizedBox(height: 16),
-              // Password TextField
-              TextField(
+              CustomTextFormField(
+                labelText: "Password",
                 controller: passwordController,
-                obscureText: true,
-                decoration: InputDecoration(
-                  labelText: "Password",
-                  hintText: "Enter your password",
-                  border: OutlineInputBorder(),
-                ),
+                isPassword: true, // إضافة هذا الحقل لتفعيل أيقونة العين
               ),
-              SizedBox(height: 16),
               // Sign In Button
+              SizedBox(height: 16),
               ElevatedButton(
                 onPressed: () {
 
