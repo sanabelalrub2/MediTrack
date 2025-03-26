@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 
 import '../../../widget/custom_text_form_field.dart';
 import '../Forget_Password.dart';
-import 'package:meditrack/widget/sign_in_widget.dart';
+import 'package:meditrack/widget/CustomButton.dart';
+
 class Sign_In extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-
+  var formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,43 +29,62 @@ class Sign_In extends StatelessWidget {
       body: SingleChildScrollView(  //
         child: Padding(
           padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              // Email TextField
-              CustomTextFormField(
-                labelText: "Email",
-                controller: emailController,
-              ),
+          child:Form(
+            key: formKey ,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+
+                CustomTextFormField(
+                  labelText: "Email",
+                  controller: emailController,
+                  validator: (val){
+
+                    if(val==null||val.isEmpty){
+                      return "Please Enter Your Email";
+                    }
+                    return null;
+                  },
+
+                ),
 
 
-              SizedBox(height: 16),
-              CustomTextFormField(
-                labelText: "Password",
-                controller: passwordController,
-                isPassword: true,
-              ),
-              // Sign In Button
-              SizedBox(height: 16),
-              Sign_in_Widget(
-                emailController: emailController,
-                passwordController: passwordController,
-              ),
+                SizedBox(height: 16),
+                CustomTextFormField(
+                  labelText: "Password",
+                  controller: passwordController,
+                  isPassword: true,
+                  validator: (val){
+
+                    if(val==null||val.isEmpty){
+                      return "Please Enter Your Password";
+                    }
+                    return null;
+                  },
+                ),
+                // Sign In Button
+                SizedBox(height: 16),
+                CustomButton(
+                 onPressed:(){ if (formKey.currentState!.validate()) {
+
+                 }},  onePressedName: "Sign in",
+                ),
 
 
-              SizedBox(height: 8),
-              // Forgot Password Button
-              TextButton(
-                onPressed: () {
+                SizedBox(height: 8),
+                // Forgot Password Button
+                TextButton(
+                  onPressed: () {
 
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Forgot_Password()),
-                  );
-                },
-                child: Text("Forgot Password?"),
-              ),
-            ],
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Forget_Password()),
+                    );
+                  },
+                  child: Text("Forgot Password?"),
+                ),
+              ],
+            ),
           ),
         ),
       ),

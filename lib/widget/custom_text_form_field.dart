@@ -4,13 +4,14 @@ class CustomTextFormField extends StatefulWidget {
   final String labelText;
   final TextEditingController controller;
   final bool isPassword;
-
+  final FormFieldValidator<String>? validator;
 
   const CustomTextFormField({
     super.key,
     required this.labelText,
     required this.controller,
     this.isPassword = false,
+     this.validator
   });
 
   @override
@@ -22,7 +23,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+
+
       controller: widget.controller,
       obscureText: widget.isPassword && !isPasswordVisible,
       decoration: InputDecoration(
@@ -42,6 +45,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         )
             : null,
       ),
+      validator:  widget.validator,
+
+
     );
   }
 }
