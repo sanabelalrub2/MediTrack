@@ -6,6 +6,7 @@ class CustomTextFormField extends StatefulWidget {
   final bool isPassword;
   final FormFieldValidator<String>? validator;
 
+
   const CustomTextFormField({
     super.key,
     required this.labelText,

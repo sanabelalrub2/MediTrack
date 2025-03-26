@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../../../widget/CustomButton.dart';
 import '../../../widget/custom_text_form_field.dart';
 
+
 class Sign_Up extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
