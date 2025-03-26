@@ -20,7 +20,7 @@ class _ResetPasswordState extends State<ResetPassword> {
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: const Text(""),
+        title: const Text(" "),
         content: Text(message),
         actions: [
           TextButton(

@@ -10,6 +10,8 @@ class Sign_Up extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           TextField(
+
+
             decoration: InputDecoration(labelText: " Name"),
           ),
           SizedBox(height: 10),
