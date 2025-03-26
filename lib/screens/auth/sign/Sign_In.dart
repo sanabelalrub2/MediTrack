@@ -42,7 +42,7 @@ class Sign_In extends StatelessWidget {
               CustomTextFormField(
                 labelText: "Password",
                 controller: passwordController,
-                isPassword: true, // إضافة هذا الحقل لتفعيل أيقونة العين
+                isPassword: true,
               ),
               // Sign In Button
               SizedBox(height: 16),
