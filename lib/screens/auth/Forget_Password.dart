@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'reset_password.dart'; //
 
 class Forgot_Password extends StatefulWidget {
   @override
@@ -12,17 +13,14 @@ class _ForgotPasswordState extends State<Forgot_Password> {
     String email = emailController.text.trim();
 
     if (email.isEmpty || !email.contains("@")) {
-
       _showTopSnackBar(context, "Please enter a valid email address!", Colors.black26);
     } else {
-
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ResetPassword()),
+        MaterialPageRoute(builder: (context) => const ResetPassword()), //
       );
     }
   }
-
 
   void _showTopSnackBar(BuildContext context, String message, Color backgroundColor) {
     final overlay = Overlay.of(context);
@@ -41,18 +39,17 @@ class _ForgotPasswordState extends State<Forgot_Password> {
             ),
             child: Text(
               message,
-              style: TextStyle(color: Colors.white, fontSize: 16),
+              style: const TextStyle(color: Colors.white, fontSize: 16),
+              textAlign: TextAlign.center,
             ),
           ),
         ),
       ),
     );
 
-
     overlay.insert(overlayEntry);
 
-
-    Future.delayed(Duration(seconds: 4), () {
+    Future.delayed(const Duration(seconds: 3), () {
       overlayEntry.remove();
     });
   }
@@ -60,46 +57,34 @@ class _ForgotPasswordState extends State<Forgot_Password> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Forgot Password")),
+      appBar: AppBar(title: const Text("Forgot Password")),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Enter your email to reset your password."),
-            SizedBox(height: 16),
+            const Text("Enter your email to reset your password."),
+            const SizedBox(height: 16),
             TextField(
               controller: emailController,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 labelText: "Email Address",
                 border: OutlineInputBorder(),
                 prefixIcon: Icon(Icons.email),
               ),
               keyboardType: TextInputType.emailAddress,
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Center(
               child: ElevatedButton(
                 onPressed: _resetPassword,
-                child: Text("Reset Password"),
+                child: const Text("Reset Password"),
               ),
             ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class ResetPassword extends StatelessWidget {
-  const ResetPassword({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Reset Password")),
-      body: Center(child: Text("Please enter a new password.")),
     );
   }
 }

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../widget/custom_text_form_field.dart';
 import '../Forget_Password.dart';
-
+import 'package:meditrack/widget/sign_in_widget.dart';
 class Sign_In extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -42,29 +42,15 @@ class Sign_In extends StatelessWidget {
               CustomTextFormField(
                 labelText: "Password",
                 controller: passwordController,
-                isPassword: true, // إضافة هذا الحقل لتفعيل أيقونة العين
+                isPassword: true,
               ),
               // Sign In Button
               SizedBox(height: 16),
-              ElevatedButton(
-                onPressed: () {
-
-                  String email = emailController.text;
-                  String password = passwordController.text;
-
-                  if (email.isEmpty || password.isEmpty) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text("Please enter both email and password")),
-                    );
-                  } else {
-                    // Here you can add actual login logic
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text("Login successful!")),
-                    );
-                  }
-                },
-                child: Text("Sign In"),
+              Sign_in_Widget(
+                emailController: emailController,
+                passwordController: passwordController,
               ),
+
               SizedBox(height: 8),
               // Forgot Password Button
               TextButton(

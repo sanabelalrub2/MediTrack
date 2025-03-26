@@ -11,11 +11,32 @@ class _ResetPasswordState extends State<ResetPassword> {
   final TextEditingController emailController = TextEditingController();
 
   @override
+  void dispose() {
+    emailController.dispose();
+    super.dispose();
+  }
+
+  void _showDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text(""),
+        content: Text(message),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text("OK"),
+          ),
+        ],
+      ),
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Reset Password"),
-
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -39,16 +60,12 @@ class _ResetPasswordState extends State<ResetPassword> {
             Center(
               child: ElevatedButton(
                 onPressed: () {
-                  String email = emailController.text;
-                  if (email.isEmpty) {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Please enter your email")),
-                    );
-                  } else {
+                  String email = emailController.text.trim();
 
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(content: Text("Reset link sent to your email")),
-                    );
+                  if (email.isEmpty) {
+                    _showDialog("❌ Please enter your email");
+                  } else {
+                    _showDialog("✅ Reset link sent to your email");
                   }
                 },
                 child: const Text("Send Reset Link"),
