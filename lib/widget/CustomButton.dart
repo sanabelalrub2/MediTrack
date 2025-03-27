@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 class CustomButton extends StatefulWidget {
   final onPressed;
-  final  String onePressedName;
+  final  String name;
   const CustomButton({
     super.key,
     required this.onPressed,
-    required this.onePressedName,
+    required this.name,
   });
 
   @override
@@ -19,7 +19,7 @@ class _CustomButtonState extends State<CustomButton> {
   Widget build(BuildContext context) {
     return ElevatedButton(
           onPressed:   widget.onPressed,
-      child: Text(widget.onePressedName),
+      child: Text(widget.name),
     );
   }
 }

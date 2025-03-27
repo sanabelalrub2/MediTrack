@@ -52,7 +52,7 @@ class Forget_Password extends StatelessWidget {
                       );
                     }
                   },
-                  onePressedName: "Reset Password",
+                  name: "Reset Password",
                 ),
               ],
             ),

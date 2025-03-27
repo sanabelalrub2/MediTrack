@@ -82,7 +82,7 @@ class Sign_Up extends StatelessWidget {
           onPressed:(){ if (formKey.currentState!.validate()) {
 
           }},
-              onePressedName: "Create an account",
+              name: "Create an account",
 
             ),
           ],
